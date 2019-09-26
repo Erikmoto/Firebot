@@ -1,0 +1,13 @@
+"D:\Programas\IAR\arm\bin\armproc.dll" 
+
+"D:\Programas\IAR\arm\bin\armsim2.dll" 
+
+"C:\Users\ryuic\Downloads\Firebot\TivaWare_C_Series-2.1.4.178\driverlib\ewarm\Exe\driverlib.out" 
+
+--plugin="D:\Programas\IAR\arm\bin\armbat.dll" 
+
+--device_macro="D:\Programas\IAR\arm\config\debugger\TexasInstruments\TM4C123.dmac" 
+
+
+
+

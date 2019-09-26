@@ -1,0 +1,35 @@
+#Generating source browse information for project firebot
+
+
+#Abbreviations
+cc = D$:\Programas\IAR\common\bin\SourceIndexer.exe
+ll = D$:\Programas\IAR\common\bin\PbdLink.exe
+bd = D$:\Programas\IAR\common\bin\makeBrowseData.exe
+
+
+
+#Rules
+rule index
+  depfile = $out.dep
+  command = $cc -out=$out -f $in
+rule link
+  command = $ll -M $out $in
+rule browsedata
+  command = $bd $in -output  $out
+
+
+
+#Build steps
+build gpio.pbi : index gpio.xcl
+build main.pbi : index main.xcl
+build system_TM4C1294_TW.pbi : index system_TM4C1294_TW.xcl
+build timerInit.pbi : index timerInit.xcl
+build UARTInit.pbi : index UARTInit.xcl
+build uartstdio.pbi : index uartstdio.xcl
+build firebot_part0.pbi : link gpio.pbi main.pbi
+build firebot_part1.pbi : link system_TM4C1294_TW.pbi timerInit.pbi
+build firebot_part2.pbi : link UARTInit.pbi uartstdio.pbi
+build firebot.pbd : link firebot_part0.pbi firebot_part1.pbi firebot_part2.pbi
+build firebot.pbw : browsedata firebot.pbd
+
+
